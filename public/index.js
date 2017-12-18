@@ -7,6 +7,7 @@ const showItems = (items) => {
       </div>
     `);
   });
+  showCount();
 };
 
 const getItems = () => {
@@ -34,8 +35,14 @@ const saveItem = () => {
     .then(response => response.json())
     .then(items => {
       showItems(items);
+      // showCount();
     })
     .catch(error => console.log(error));
+};
+
+const showCount = () => {
+  const count = $('.item').length;
+  $('.count').text(count)
 };
 
 $(document).ready(getItems);
