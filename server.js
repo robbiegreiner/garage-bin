@@ -55,8 +55,13 @@ app.patch('/api/v1/items/:itemId', (request, response) => {
   const id = request.params.itemId;
   const cleanliness = request.body.cleanliness;
   database('items').where('id', id).update({cleanliness})
-    .then( () => {
-      response.status(204).send();
+    .then( (result) => {
+      if (!result) {
+        response.status(422).json({ error: `No Item with ID ${id}`});
+      } else {
+        response.status(204).send();
+      }
+
     })
     .catch(error => {
       response.status(500).json({ error });
