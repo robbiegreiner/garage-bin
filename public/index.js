@@ -10,6 +10,36 @@ const showItems = (items) => {
   showCount();
 };
 
+const getItems = () => {
+  fetch('/api/v1/items')
+    .then(response => response.json())
+    .then(items => {
+      showItems(sortItemsAscending(items));
+    });
+};
+
+const saveItem = () => {
+  const item = {
+    name: $('.name-input').val(),
+    reason: $('.reason-input').val(),
+    cleanliness: $('.drop-down').val()
+  };
+
+  fetch('/api/v1/items', {
+    method: 'POST',
+    body: JSON.stringify(item),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(items => {
+      showItems(sortItemsAscending(items));
+      // showCount();
+    })
+    .catch(error => console.log(error));
+};
+
 const sortItemsAscending = (items) => {
   return items.sort((a, b) => {
     const nameA = a.name.toLowerCase();
@@ -36,36 +66,6 @@ const sortItemsDescending = (items) => {
     }
     return 0;
   });
-};
-
-const getItems = () => {
-  fetch('/api/v1/items')
-    .then(response => response.json())
-    .then(items => {
-      showItems(items);
-    });
-};
-
-const saveItem = () => {
-  const item = {
-    name: $('.name-input').val(),
-    reason: $('.reason-input').val(),
-    cleanliness: $('.drop-down').val()
-  };
-
-  fetch('/api/v1/items', {
-    method: 'POST',
-    body: JSON.stringify(item),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(response => response.json())
-    .then(items => {
-      showItems(items);
-      // showCount();
-    })
-    .catch(error => console.log(error));
 };
 
 const showCount = () => {
