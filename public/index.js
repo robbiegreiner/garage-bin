@@ -90,6 +90,21 @@ const showCount = () => {
   $('.rancid-count').text(rancidCount);
 };
 
+const changeCleanliness = (event) => {
+  const newCleanliness = JSON.stringify({
+    cleanliness: event.target.value
+  });
+  const id = $(event.target).closest('.item').attr('id');
+
+  fetch(`/api/v1/items/${id}`, {
+    method: 'PATCH',
+    body: newCleanliness,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
+
 const toggleDetails = (event) => {
   $(event.target).siblings('.item-details').toggleClass('hidden');
 };
@@ -97,3 +112,4 @@ const toggleDetails = (event) => {
 $(document).ready(getItems);
 $('.submit-button').on('click', saveItem);
 $('.items-container').on('click', '.details-button', (event) => toggleDetails(event));
+$('.items-container').on('change', '.detail-drop-down', (event) => changeCleanliness(event));
