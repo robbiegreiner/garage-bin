@@ -1,29 +1,119 @@
 * {
   padding: 0;
+  margin: 0;
 }
 
 body {
+  background-color: #004b6e;
+  background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png");
+  font-family: 'Roboto', sans-serif;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
+}
+
+h1 {
+  margin: 50px 0 30px 0;
+  font-size: 60px;
+  color: white;
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 1);
+}
+
+h3 {
+  margin: 20px 0 20px 0;
+}
+
+input {
+  height: 28px;
+  width: 200px;
+  font-size: 16px;
+  padding-left: 5px;
+}
+
+.drop-down {
+  width: 150px;
+  height: 30px;
+  font-size: 14px;
+}
+
+.submit-button {
+  height: 30px;
+  width: 60px;
+}
+
+.add-item {
+  margin-bottom: 30px;
+}
+
+.sort-button {
+  width: 100px;
+  height: 20px;
+}
+
+.garage {
+  width: 90%;
+}
+
+.closed {
+  width: 90%;
+  display: none;
+  position: absolute;
+  height: 80vh;
+  background-color: black;
 }
 
 .items-container {
-  width: 95%;
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 .item {
+  border: 2px solid white;
+  border-radius: 2px;
+  background-color: #4c7a91;
+  background-image: url("https://www.transparenttextures.com/patterns/light-aluminum.png");
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 200px;
   height: 300px;
-  background-color: gray;
   margin: 20px;
+  text-align: center;
+}
+
+.item h2 {
+  margin: 40px 0 40px 0;
+}
+
+.item h3 {
+  margin: 10px 0 10px 0;
+}
+
+.item p {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.item button {
+  background-color: #004263;
+  color: white;
+}
+
+
+.details-button {
+  width: 100px;
+  height: 30px;
+  font-size: 15px;
+  border: 2px solid white;
+  margin: 20px 0 20px 0;
+}
+
+.count-area {
+  margin-top: 40px;
 }
 
 .hidden {
