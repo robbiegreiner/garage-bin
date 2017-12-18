@@ -1,3 +1,4 @@
+let allItems;
 
 const showItems = (items) => {
   items.forEach(item => {
@@ -24,7 +25,8 @@ const getItems = () => {
   fetch('/api/v1/items')
     .then(response => response.json())
     .then(items => {
-      showItems(sortItemsAscending(items));
+      allItems = items;
+      showItems(items);
     });
 };
 
@@ -49,7 +51,8 @@ const saveItem = () => {
   })
     .then(response => response.json())
     .then(items => {
-      showItems(sortItemsAscending(items));
+      showItems(items);
+      allItems.push(items[0]);
       clearFields();
     })
     .catch(error => console.log(error));
@@ -74,13 +77,26 @@ const sortItemsDescending = (items) => {
     const nameA = a.name.toLowerCase();
     const nameB = b.name.toLowerCase();
     if (nameA < nameB) {
-      return -1;
+      return 1;
     }
     if (nameA > nameB) {
-      return 1;
+      return -1;
     }
     return 0;
   });
+};
+
+const sortItems = () => {
+  const buttonText =  $('.sort-button').text();
+  if (buttonText === 'Sort A-Z') {
+    $('.sort-button').text('Sort Z-A');
+    $('.item').remove();
+    showItems(sortItemsAscending(allItems));
+  } else {
+    $('.sort-button').text('Sort A-Z');
+    $('.item').remove();
+    showItems(sortItemsDescending(allItems));
+  }
 };
 
 const showCount = () => {
@@ -116,5 +132,6 @@ const toggleDetails = (event) => {
 
 $(document).ready(getItems);
 $('.submit-button').on('click', saveItem);
+$('.sort-button').on('click', sortItems);
 $('.items-container').on('click', '.details-button', (event) => toggleDetails(event));
 $('.items-container').on('change', '.detail-drop-down', (event) => changeCleanliness(event));

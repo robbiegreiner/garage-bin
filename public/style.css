@@ -71,6 +71,8 @@ input {
   flex-wrap: wrap;
 }
 .item {
+  border: 2px solid white;
+  border-radius: 2px;
   background-color: #4c7a91;
   background-image: url("https://www.transparenttextures.com/patterns/light-aluminum.png");
   display: flex;
@@ -105,6 +107,8 @@ input {
 .details-button {
   width: 100px;
   height: 30px;
+  font-size: 15px;
+  border: 2px solid white;
   margin: 20px 0 20px 0;
 }
 
