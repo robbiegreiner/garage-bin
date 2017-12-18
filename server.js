@@ -22,3 +22,19 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get('/api/v1/items', (request, response) => {
+  database('items').select()
+    .then((items) => {
+      response.status(200).json(items);
+    })
+    .catch((error) => {
+      response.status(500).json({ error });
+    });
+});
+
+app.listen(app.get('port'), () => {
+  console.log(`running on ${app.get('port')}.`);
+});
+
+module.exports = app;
