@@ -10,11 +10,26 @@
   </head>
   <body>
   <h1>Garage Bin<h1>
+    <h3>Add Item</h3>
+    <div class="add-item">
+      <input class="name-input "type="text" name="" value="" placeholder="Name">
+      <input class="reason-input "type="text" name="" value="" placeholder="Reason">
+      <select class="drop-down" name="">
+        <option value="Sparkling">Sparkling</option>
+        <option value="Dusty">Dusty</option>
+        <option value="Rancid">Rancid</option>
+      </select>
+      <button class="submit-button" type="button" name="button">Add Item</button>
+    </div>
+
     <div class="open-garage">
       <div class="items-container">
-
       </div>
     </div>
+    <h2 class="item-count">Item Count: <span class='count'></span></h2>
+    <h3 class="item-count">Sparkling Items: <span class='sparkling-count'></span></h3>
+    <h3 class="item-count">Dusty Items: <span class='dusty-count'></span></h3>
+    <h3 class="item-count">Rancid Items: <span class='rancid-count'></span></h3>
   <script src="index.js"></script>
   </body>
 </html>
