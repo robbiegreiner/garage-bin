@@ -32,7 +32,11 @@ const saveItem = () => {
     }
   })
     .then(response => response.json())
+    .then(items => {
+      showItems(items);
+    })
     .catch(error => console.log(error));
 };
 
 $(document).ready(getItems);
+$('.submit-button').on('click', saveItem);
