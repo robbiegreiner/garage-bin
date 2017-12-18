@@ -51,6 +51,18 @@ app.post('/api/v1/items', (request, response) => {
     });
 });
 
+app.patch('/api/v1/items/:itemId', (request, response) => {
+  const id = request.params.itemId;
+  const cleanliness = request.body.cleanliness;
+  database('items').where('id', id).update({cleanliness})
+    .then( () => {
+      response.status(204).send();
+    })
+    .catch(error => {
+      response.status(500).json({ error });
+    });
+});
+
 app.listen(app.get('port'), () => {
   console.log(`running on ${app.get('port')}.`);
 });
