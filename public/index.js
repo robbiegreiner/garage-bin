@@ -4,6 +4,11 @@ const showItems = (items) => {
     $('.items-container').append(`
       <div class='item${item.id} item ${item.cleanliness}'>
         <h2 class='item-name'>${item.name}</h2>
+        <button class='details-button'>Details</button>
+        <div class='item-details hidden'>
+          <h4>Reason: ${item.reason}</h4>
+          <h4>cleanliness: ${item.cleanliness}</h4>
+        </div>
       </div>
     `);
   });
@@ -80,5 +85,10 @@ const showCount = () => {
   $('.rancid-count').text(rancidCount);
 };
 
+const toggleDetails = (event) => {
+  $(event.target).siblings('.item-details').toggleClass('hidden');
+};
+
 $(document).ready(getItems);
 $('.submit-button').on('click', saveItem);
+$('.items-container').on('click', '.details-button', (event) => toggleDetails(event));
