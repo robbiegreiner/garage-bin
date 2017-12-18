@@ -2,7 +2,7 @@
 const showItems = (items) => {
   items.forEach(item => {
     $('.items-container').append(`
-      <div class='item${item.id} item'>
+      <div class='item${item.id} item ${item.cleanliness}'>
         <h2 class='item-name'>${item.name}</h2>
       </div>
     `);
@@ -41,8 +41,15 @@ const saveItem = () => {
 };
 
 const showCount = () => {
-  const count = $('.item').length;
-  $('.count').text(count)
+  const itemCount = $('.item').length;
+  const sparklingCount = $('.Sparkling').length;
+  const dustyCount = $('.Dusty').length;
+  const rancidCount = $('.Rancid').length;
+
+  $('.count').text(itemCount);
+  $('.sparkling-count').text(sparklingCount);
+  $('.dusty-count').text(dustyCount);
+  $('.rancid-count').text(rancidCount);
 };
 
 $(document).ready(getItems);
