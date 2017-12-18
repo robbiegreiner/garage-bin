@@ -17,4 +17,22 @@ const getItems = () => {
     });
 };
 
+const saveItem = () => {
+  const item = {
+    name: $('.name-input').val(),
+    reason: $('.reason-input').val(),
+    cleanliness: $('.drop-down').val()
+  };
+
+  fetch('/api/v1/items', {
+    method: 'POST',
+    body: JSON.stringify(item),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error));
+};
+
 $(document).ready(getItems);
