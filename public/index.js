@@ -10,6 +10,34 @@ const showItems = (items) => {
   showCount();
 };
 
+const sortItemsAscending = (items) => {
+  return items.sort((a, b) => {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
+};
+
+const sortItemsDescending = (items) => {
+  return items.sort((a, b) => {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
+};
+
 const getItems = () => {
   fetch('/api/v1/items')
     .then(response => response.json())
