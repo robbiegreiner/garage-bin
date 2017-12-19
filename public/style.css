@@ -57,11 +57,34 @@ input {
 }
 
 .closed {
-  width: 90%;
-  display: none;
-  position: absolute;
-  height: 80vh;
   background-color: black;
+  border-radius: 10px;
+  background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+  width: 90%;
+  position: absolute;
+  margin-top: 20px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  transition: height 1500ms ease-in-out;
+}
+
+.open-up h1 {
+  cursor: pointer;
+  border: 5px solid white;
+  padding: 10px;
+  border-radius: 10px;
+  transition: .5s ease;
+}
+
+.open-up h1:hover {
+  border: 5px solid #004263;
+  color: #004263;
+  transition: .5s ease;
+}
+
+.roll-up {
+  height: 0px;
 }
 
 .items-container {
