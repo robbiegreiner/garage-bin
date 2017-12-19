@@ -130,8 +130,14 @@ const toggleDetails = (event) => {
   $(event.target).siblings('.item-details').toggleClass('hidden');
 };
 
+const hideDoor = () => {
+  $('.closed').addClass('roll-up');
+  $('.open-button').remove();
+};
+
 $(document).ready(getItems);
 $('.submit-button').on('click', saveItem);
+$('.open-button').on('click', hideDoor);
 $('.sort-button').on('click', sortItems);
 $('.items-container').on('click', '.details-button', (event) => toggleDetails(event));
 $('.items-container').on('change', '.detail-drop-down', (event) => changeCleanliness(event));
