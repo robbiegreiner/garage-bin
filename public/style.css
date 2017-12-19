@@ -57,7 +57,8 @@ input {
 }
 
 .closed {
-  background-color: #735656;
+  background-color: black;
+  border-radius: 10px;
   background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
   width: 90%;
   position: absolute;
@@ -65,7 +66,6 @@ input {
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-color: black;
   transition: height 1500ms ease-in-out;
 }
 
